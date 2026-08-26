@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Discos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'oswald': ['Oswald', 'sans-serif'],
+                        'mono': ['"Courier Prime"', 'monospace'],
+                    },
+                    colors: {
+                        'brand-black': '#000000',
+                        'brand-gray': '#e5e5e5',
+                        'brand-text': '#333333'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Courier Prime', monospace; /* Fuente por defecto para el texto general */
+            color: #000;
+        }
+        
+        h1 {
+            font-family: 'Oswald', sans-serif;
+        }
+
+        /* Estilo para los selectores del menú que parecen corchetes */
+        .nav-item::before { content: "["; }
+        .nav-item::after { content: "]"; }
+        .nav-item-dropdown::after { content: " ⌄]"; } /* Simula la flecha hacia abajo dentro del corchete */
+
+        /* Estilizar input de cantidad para que no tenga flechas por defecto */
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <header class="w-full">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center border-b border-black">
+            
+            <!-- Buscador -->
+            <div class="flex items-center w-64 border-b border-black pb-1">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 mr-2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                </svg>
+                <input type="text" placeholder="Search" class="w-full focus:outline-none text-sm placeholder-gray-500 font-mono">
+            </div>
+
+            <!-- Logos centrales (Placeholders) -->
+            <div class="flex items-center space-x-2">
+                <!-- Reemplazar con las imágenes reales -->
+                <div class="h-10 w-8 border border-black flex items-center justify-center font-bold text-xs">i</div>
+                <div class="h-10 w-10 border border-black rounded-full flex items-center justify-center flex-col">
+                    <span class="text-[10px] font-bold leading-none">G</span>
+                    <span class="text-[6px] leading-none">GEFFEN</span>
+                </div>
+                <div class="h-10 w-10 border border-black flex items-center justify-center font-bold text-xs">A&M</div>
+            </div>
+
+            <!-- Usuario y Carrito -->
+            <div class="flex items-center space-x-4">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                  <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clip-rule="evenodd" />
+                </svg>
+                <div class="flex items-center font-bold font-oswald text-xl tracking-wide">
+                    CART <span class="ml-1 px-1 border border-black rounded text-sm flex items-center justify-center">0</span>
+                </div>
+            </div>
+        </div>
+
+        <nav class="w-full border-b border-gray-300 py-3">
+            <ul class="container mx-auto flex justify-center space-x-2 text-sm font-mono tracking-tighter">
+                <li><a href="#" class="nav-item hover:underline">Artists</a></li>
+                <li><a href="#" class="nav-item nav-item-dropdown hover:underline">Music</a></li>
+                <li><a href="#" class="nav-item nav-item-dropdown hover:underline">Merch</a></li>
+                <li><a href="#" class="nav-item hover:underline">Exclusives</a></li>
+                <li><a href="#" class="nav-item nav-item-dropdown hover:underline">Collections</a></li>
+                <li><a href="#" class="nav-item nav-item-dropdown hover:underline">Vinyl Collective</a></li>
+                <li><a href="#" class="nav-item hover:underline">Definitive Sound Series</a></li>
+                <li><a href="#" class="nav-item hover:underline">Lost Highway</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-8 py-12 flex flex-col md:flex-row gap-12">
+        
+        <!-- Sección de Imagen del Producto -->
+        <div class="md:w-1/2 flex justify-center items-start">
+            <div class="relative w-full max-w-lg">
+                <!-- Imagen principal (Portada) - Reemplazar 'src' -->
+                <img src="https://placehold.co/600x600/a0c4d8/000000?text=Album+Cover\n(Replace+Image)" alt="Album Cover" class="w-full h-auto object-cover shadow-lg relative z-10" style="aspect-ratio: 1/1;">
+                
+                <!-- Vinilo asomando por la derecha - Reemplazar 'src' -->
+                <img src="https://placehold.co/500x500/111/444?text=Vinyl+Record" alt="Vinyl Record" class="absolute top-[5%] right-[-30%] w-[90%] h-auto object-cover rounded-full z-0 opacity-90 mix-blend-multiply" style="aspect-ratio: 1/1;">
+            </div>
+        </div>
+
+        <div class="md:w-1/2 flex flex-col pt-4">
+            
+            <!-- Breadcrumbs -->
+            <div class="text-sm font-mono mb-4 text-gray-700">
+                <a href="#" class="underline text-blue-600 hover:text-blue-800">Home</a> &gt; 
+                <span>you seem pretty sad for a girl so in love - 'spark in the dark' black vinyl</span>
+            </div>
+
+            <!-- Título -->
+            <h1 class="text-6xl font-bold font-oswald uppercase leading-none tracking-tight mb-6">
+                YOU SEEM PRETTY<br>
+                SAD FOR A GIRL SO IN<br>
+                LOVE - 'SPARK IN THE<br>
+                DARK' BLACK VINYL
+            </h1>
+
+            <!-- Artista y Precio -->
+            <div class="font-mono text-sm mb-6">
+                <p class="font-bold mb-2">Artist: <span class="font-normal">Olivia Rodrigo</span></p>
+                <p class="mb-4">$33.00</p>
+            </div>
+
+            <!-- Controles de Cantidad y Botón -->
+            <div class="mb-8 font-mono">
+                <label for="quantity" class="block mb-2 text-sm">Quantity</label>
+                <div class="flex items-center border border-black w-24 mb-4">
+                    <button id="btn-minus" class="px-3 py-1 hover:bg-gray-100 transition">-</button>
+                    <input type="number" id="quantity" value="1" min="1" max="4" class="w-full text-center focus:outline-none appearance-none">
+                    <button id="btn-plus" class="px-3 py-1 hover:bg-gray-100 transition">+</button>
+                </div>
+                
+                <button class="w-full bg-black text-white py-4 uppercase font-oswald tracking-widest text-lg hover:bg-gray-800 transition duration-300">
+                    ADD TO CART
+                </button>
+            </div>
+
+            <!-- Información adicional y Descripción -->
+            <div class="text-xs font-mono space-y-4 max-w-md">
+                <p>Ships on: August 31, 2026</p>
+                <p class="text-gray-600">Limited to 4 per customer.</p>
+                
+                <p class="leading-relaxed">
+                    olivia rodrigo's highly anticipated third studio album, <i>you seem pretty sad for a girl so in love</i>, follows her critically acclaimed lps <i>GUTS</i> and <i>SOUR</i>. the three-time GRAMMY® award winner releases the album on June 12, 2026.
+                </p>
+                
+                <p>standard black vinyl.</p>
+                <p>tracklist to be announced.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnMinus = document.getElementById('btn-minus');
+            const btnPlus = document.getElementById('btn-plus');
+            const inputQuantity = document.getElementById('quantity');
+            
+            // Límite basado en el texto de la página "Limited to 4 per customer"
+            const maxQuantity = 4;
+            const minQuantity = 1;
+
+            btnMinus.addEventListener('click', () => {
+                let currentValue = parseInt(inputQuantity.value);
+                if (currentValue > minQuantity) {
+                    inputQuantity.value = currentValue - 1;
+                }
+            });
+
+            btnPlus.addEventListener('click', () => {
+                let currentValue = parseInt(inputQuantity.value);
+                if (currentValue < maxQuantity) {
+                    inputQuantity.value = currentValue + 1;
+                }
+            });
+
+            // Validar entrada manual
+            inputQuantity.addEventListener('change', () => {
+                let value = parseInt(inputQuantity.value);
+                if (isNaN(value) || value < minQuantity) {
+                    inputQuantity.value = minQuantity;
+                } else if (value > maxQuantity) {
+                    inputQuantity.value = maxQuantity;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
