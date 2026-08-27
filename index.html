@@ -62,11 +62,11 @@
                 <input type="text" placeholder="Search" class="w-full text-sm outline-none bg-transparent placeholder-gray-500">
             </div>
 
-            <!-- Logos -->
+            <!-- Logos (Corregido para evitar que ALTERNATIVE se salga del borde) -->
             <div class="w-full md:w-1/3 flex justify-center items-center gap-4">
-                <div class="w-8 h-10 border-2 border-black flex items-center justify-center font-bold text-xl relative">
-                    <span class="absolute top-0 left-0 text-[8px] leading-none">A<br>L<br>T<br>E<br>R<br>N<br>A<br>T<br>I<br>V<br>E</span>
-                    i
+                <div class="h-10 border-2 border-black flex items-center justify-center font-bold text-xl px-1">
+                    <div class="text-[5px] leading-[1.1] text-center mr-1">A<br>L<br>T<br>E<br>R<br>N<br>A<br>T<br>I<br>V<br>E</div>
+                    <span class="leading-none pb-1">i</span>
                 </div>
                 <div class="w-10 h-10 rounded-full border-2 border-black flex flex-col items-center justify-center leading-none">
                     <span class="font-bold text-lg">G</span>
@@ -89,7 +89,7 @@
         </div>
 
         <!-- Navigation Links -->
-        <nav class="w-full py-3 overflow-x-auto hide-scrollbar text-xs flex justify-center items-center gap-2 md:gap-4 whitespace-nowrap px-4 border-t border-gray-100">
+        <nav class="w-full py-3 overflow-x-auto hide-scrollbar text-xs flex justify-center items-center gap-2 md:gap-4 whitespace-nowrap px-4 border-t border-gray-100 relative z-20">
             <a href="#" class="hover:bg-gray-100 px-1">[Artists]</a>
             <a href="#" class="hover:bg-gray-100 px-1">[Music ˅]</a>
             <a href="#" class="hover:bg-gray-100 px-1">[Merch ˅]</a>
@@ -101,29 +101,23 @@
         </nav>
     </header>
 
-    <main class="container mx-auto px-4 md:px-8 py-12 flex flex-col lg:flex-row gap-8 lg:gap-12 items-start flex-grow">
+    <!-- Añadidas transiciones suaves y mejor control del ancho máximo -->
+    <main class="container mx-auto px-4 md:px-8 py-12 flex flex-col lg:flex-row gap-12 lg:gap-8 items-start flex-grow transition-all duration-500 ease-in-out">
         
         <!-- Product Image Section -->
-        <!-- Cambiado a lg:w-1/2 para que solo esté al lado del texto en pantallas grandes -->
-        <div class="w-full lg:w-1/2 flex justify-center items-start lg:sticky lg:top-8 z-10">
-            <div class="relative w-full max-w-lg md:max-w-xl lg:max-w-full">
+        <div class="w-full lg:w-1/2 flex justify-center lg:justify-end items-start lg:sticky lg:top-8 z-10 lg:pr-12 xl:pr-24 transition-all duration-500 ease-in-out">
+            <!-- Limitamos el ancho para que no estalle en monitores grandes -->
+            <div class="relative w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[450px] xl:max-w-[500px]">
                 <!-- Portada del Álbum -->
-                <img src="https://placehold.co/600x600/7cb2d6/000?text=Album+Cover" alt="Album Cover" class="w-[85%] h-auto relative z-10 shadow-lg" style="aspect-ratio: 1/1;">
-                
-                <!-- Etiqueta Parental Advisory -->
-                <div class="absolute top-4 right-[20%] z-20 bg-black text-white text-[8px] sm:text-[10px] font-sans font-bold px-2 py-1 border border-white text-center">
-                    PARENTAL<br><span class="text-[12px] sm:text-xs">ADVISORY</span><br><span class="font-normal text-[6px]">EXPLICIT CONTENT</span>
-                </div>
+                <img src="https://res.cloudinary.com/dhx58lnzb/image/upload/v1787792668/POONTE_PERRITAA_DELUXE_EDITION_o1kpfk.png" alt="Album Cover" class="w-full h-auto relative z-20 shadow-xl transition-transform duration-500" style="aspect-ratio: 1/1;">
 
                 <!-- Vinilo asomando por la derecha -->
-                <!-- Reducido el margen derecho para evitar colisión prematura en pantallas medianas -->
-                <img src="https://placehold.co/500x500/111/444?text=Vinyl+Record" alt="Vinyl Record" class="absolute top-[5%] right-0 lg:right-[-15%] xl:right-[-25%] w-[85%] md:w-[90%] h-auto object-cover rounded-full z-0 opacity-90 mix-blend-multiply" style="aspect-ratio: 1/1;">
+                <img src="https://res.cloudinary.com/dhx58lnzb/image/upload/v1787792668/POONTE_PERRITAA_DELUXE_EDITION_o1kpfk.png" alt="Vinyl Record" class="absolute top-[2%] right-[-25%] sm:right-[-35%] w-[96%] h-auto object-cover rounded-full z-10 opacity-95 mix-blend-multiply transition-all duration-500 ease-in-out" style="aspect-ratio: 1/1;">
             </div>
         </div>
 
         <!-- Product Details Section -->
-        <!-- Añadido overflow-hidden para evitar que el contenido desborde en el eje X -->
-        <div class="w-full lg:w-1/2 flex flex-col pt-4 lg:pt-0 pl-0 lg:pl-12 xl:pl-16 overflow-hidden">
+        <div class="w-full lg:w-1/2 flex flex-col pt-8 lg:pt-0 pl-0 lg:pl-4 z-30 transition-all duration-500 ease-in-out overflow-hidden">
             
             <!-- Breadcrumbs -->
             <div class="text-[10px] sm:text-xs mb-4 text-gray-700 break-words">
@@ -212,8 +206,8 @@
             <!-- Main Cart Item (Hidden by default until added) -->
             <div id="cart-item-container" class="hidden flex gap-4 items-start">
                 <div class="relative w-20 h-20 flex-shrink-0">
-                    <img src="https://placehold.co/600x600/7cb2d6/000?text=Album+Cover" alt="Cart Item Cover" class="w-[85%] h-full object-cover relative z-10 shadow-sm">
-                    <img src="https://placehold.co/500x500/111/444?text=Vinyl+Record" alt="Vinyl" class="absolute top-[5%] right-[-15%] w-[85%] h-auto object-cover rounded-full z-0 opacity-90 mix-blend-multiply" style="aspect-ratio: 1/1;">
+                    <img src="https://res.cloudinary.com/dhx58lnzb/image/upload/v1787792668/POONTE_PERRITAA_DELUXE_EDITION_o1kpfk.png" alt="Cart Item Cover" class="w-[85%] h-full object-cover relative z-10 shadow-sm">
+                    <img src="https://res.cloudinary.com/dhx58lnzb/image/upload/v1787792668/POONTE_PERRITAA_DELUXE_EDITION_o1kpfk.png" alt="Vinyl" class="absolute top-[5%] right-[-15%] w-[85%] h-auto object-cover rounded-full z-0 opacity-90 mix-blend-multiply" style="aspect-ratio: 1/1;">
                 </div>
                 <div class="flex-grow flex flex-col gap-1 text-[10px] sm:text-xs">
                     <div class="flex justify-between items-start gap-2">
@@ -222,14 +216,14 @@
                     </div>
                     <p><span class="font-bold">Ships on:</span> August 31, 2026</p>
                     
-                    <!-- Item Actions -->
+                    <!-- Item Actions (Se añadieron IDs para JS) -->
                     <div class="flex items-center gap-4 mt-2">
                         <div class="flex items-center border border-white w-fit h-6 bg-cart-blue">
-                            <button class="px-2 hover:bg-white/10 h-full font-bold">-</button>
-                            <input type="text" id="sidebar-qty" value="1" class="w-8 text-center text-[10px] outline-none bg-transparent font-mono text-white" readonly>
-                            <button class="px-2 hover:bg-white/10 h-full font-bold">+</button>
+                            <button id="sidebar-btn-minus" class="px-2 hover:bg-white/20 h-full font-bold transition-colors">-</button>
+                            <input type="text" id="sidebar-qty" value="1" class="w-8 text-center text-[10px] outline-none bg-transparent font-mono text-white transition-all" readonly>
+                            <button id="sidebar-btn-plus" class="px-2 hover:bg-white/20 h-full font-bold transition-colors">+</button>
                         </div>
-                        <button class="text-white hover:text-gray-300">
+                        <button id="sidebar-btn-remove" class="text-white hover:text-red-300 transition-colors">
                             <i class="fa-solid fa-trash-can"></i>
                         </button>
                     </div>
@@ -269,8 +263,32 @@
             const cartItemContainer = document.getElementById('cart-item-container');
             const sidebarQty = document.getElementById('sidebar-qty');
             const sidebarItemCount = document.getElementById('sidebar-item-count');
+            
+            // Sidebar interactivos
+            const sidebarBtnMinus = document.getElementById('sidebar-btn-minus');
+            const sidebarBtnPlus = document.getElementById('sidebar-btn-plus');
+            const sidebarBtnRemove = document.getElementById('sidebar-btn-remove');
 
             let cartTotalQuantity = 0;
+
+            // Funciones de actualización de UI Global
+            function updateCartUI() {
+                cartCount.innerText = cartTotalQuantity;
+                sidebarQty.value = cartTotalQuantity;
+                sidebarItemCount.innerText = cartTotalQuantity;
+                
+                // Si llega a 0, ocultar el item
+                if (cartTotalQuantity === 0) {
+                    cartItemContainer.classList.add('hidden');
+                } else {
+                    cartItemContainer.classList.remove('hidden');
+                }
+
+                // Animar el numerito del header
+                cartCount.classList.remove('animate-cart-up');
+                void cartCount.offsetWidth; 
+                cartCount.classList.add('animate-cart-up');
+            }
 
             // Quantity Logic (Main Page)
             btnMinus.addEventListener('click', () => {
@@ -310,6 +328,26 @@
             closeCartBtn.addEventListener('click', closeCart);
             cartOverlay.addEventListener('click', closeCart);
 
+            // Sidebar Quantity Logic (+, -, Remove)
+            sidebarBtnMinus.addEventListener('click', () => {
+                if (cartTotalQuantity > 1) {
+                    cartTotalQuantity--;
+                    updateCartUI();
+                }
+            });
+
+            sidebarBtnPlus.addEventListener('click', () => {
+                if (cartTotalQuantity < 4) {
+                    cartTotalQuantity++;
+                    updateCartUI();
+                }
+            });
+
+            sidebarBtnRemove.addEventListener('click', () => {
+                cartTotalQuantity = 0;
+                updateCartUI();
+            });
+
             // Add to Cart Logic
             addToCartBtn.addEventListener('click', () => {
                 const qtyToAdd = parseInt(qtyInput.value);
@@ -323,21 +361,17 @@
                 // Disable button to prevent double clicks
                 addToCartBtn.disabled = true;
 
-                // 2. Wait up to 2.5 seconds to simulate loading
+                // 2. Wait up to 2 seconds to simulate loading
                 setTimeout(() => {
-                    // Update main cart badge
-                    cartTotalQuantity += qtyToAdd;
-                    cartCount.innerText = cartTotalQuantity;
+                    // Update quantities
+                    let maxAllowed = 4;
+                    if (cartTotalQuantity + qtyToAdd > maxAllowed) {
+                        cartTotalQuantity = maxAllowed; // Cap at 4
+                    } else {
+                        cartTotalQuantity += qtyToAdd;
+                    }
                     
-                    // Trigger Cart Header Animation
-                    cartCount.classList.remove('animate-cart-up');
-                    void cartCount.offsetWidth; 
-                    cartCount.classList.add('animate-cart-up');
-                    
-                    // Update Sidebar Content
-                    cartItemContainer.classList.remove('hidden');
-                    sidebarQty.value = cartTotalQuantity;
-                    sidebarItemCount.innerText = cartTotalQuantity;
+                    updateCartUI();
                     
                     // Revert button to original state
                     addToCartBtn.classList.remove('bg-white', 'text-black');
